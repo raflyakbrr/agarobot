@@ -41,12 +41,12 @@ facebookManager.prototype.getCheckAccs = function(settings, callback) {
         account.datr = cookie.datr;
         account.xs = cookie.xs;
         account.requestFBToken(function(token, info) {
-            //if (token && !manager.check[cookie.c_user]) console.log("\n" + cookie.c_user)
+            if (token && !manager.check[cookie.c_user]) console.log("\n" + cookie.c_user)
             if (token && !manager.check[cookie.c_user]) {
                 manager.check[cookie.c_user] = cookie;
                 manager.activeAccounts.push({
                     cookie: cookie,
-                    token: token
+                    token: token,
                 });
             } else {
             };
@@ -56,9 +56,9 @@ facebookManager.prototype.getCheckAccs = function(settings, callback) {
 
     function newAccountValidated() {
         amountOfTriedAccounts++;
-        //process.stdout.write('\x1B[2J\x1B[0f');
+        process.stdout.write('\x1B[2J\x1B[0f');
         process.stdout.write(`\r[FaceBookManager]`.green + ` Checking... ${Math.floor((amountOfTriedAccounts / amountOfAccounts) * 100)}% (Checked accounts: ${amountOfTriedAccounts} / ${amountOfAccounts})`.yellow);
-        //console.log(`[FaceBookManager] Checking... ${Math.floor((amountOfTriedAccounts / amountOfAccounts) * 100)}%`);
+        console.log(`[FaceBookManager] Checking... ${Math.floor((amountOfTriedAccounts / amountOfAccounts) * 100)}%`);
         if (amountOfAccounts == amountOfTriedAccounts) {
             if (typeof callback == "function") {
                 manager.doneChecking = true;
@@ -129,6 +129,6 @@ facebookManager.prototype.returnToken = function(token) {
 
 var manager = new facebookManager();
 
-manager.setAccounts(JSON.parse(fs.readFileSync("./facebookTokens3.json", "utf-8")));
+manager.setAccounts(JSON.parse(fs.readFileSync("./facebookTokens.json", "utf-8")));
 
 module.exports = manager;

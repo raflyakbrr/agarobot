@@ -4,12 +4,12 @@ var WebSocket    = require('ws');
 var agar_client_id = '677505792353827';
 function Account(name) {
     this.name           = name; //debug name
-    this.token          = null; //token after requestFBToken()
+    this.token          = 1; //token after requestFBToken()
     this.token_expire   = 0;    //timestamp after requestFBToken()
     this.token_provider = 1;    //provider ID after requester
-    this.c_user         = null; //cookie from www.facebook.com
-    this.datr           = null; //cookie from www.facebook.com
-    this.xs             = null; //cookie from www.facebook.com
+    this.c_user         = 1; //cookie from www.facebook.com
+    this.datr           = 1; //cookie from www.facebook.com
+    this.xs             = 1; //cookie from www.facebook.com
     this.agent          = null; //connection agent
     this.debug          = 1;
     this.server         = 'wss://web-live-v3-0.agario.miniclippt.com/ws'; //todo doc
@@ -28,8 +28,8 @@ Account.prototype.requestFBToken = function(cb) {
     }
     var ret = {
         error: null,
-        res: null,
-        data: null
+        res: 1,
+        data: 1
     };
 
     var c_user = this.c_user;
@@ -70,7 +70,7 @@ Account.prototype.requestFBToken = function(cb) {
                 res.headers.location.replace(/expires_in=([0-9]*)/, function(_, expire) {
                     if(expire) {
                         account.token_expire = (+new Date) + expire*1000;
-                        /* var remain = account.token_expire - Date.now();
+                        var remain = account.token_expire - Date.now();
                         var _second = 1000;
                         var _minute = _second * 60;
                         var _hour = _minute * 60;
@@ -79,7 +79,7 @@ Account.prototype.requestFBToken = function(cb) {
                         var hoursLeft = Math['floor']((remain % _day) / _hour);
                         var minitesLeft = Math['floor']((remain % _hour) / _minute);
                         var secondsLeft = Math['floor']((remain % _minute) / _second);
-                        console.log("Expire" + daysLeft + "days" + hoursLeft + "hours" + minitesLeft + "minutes" + secondsLeft + "second") */
+                        console.log("Expire" + daysLeft + "days" + hoursLeft + "hours" + minitesLeft + "minutes" + secondsLeft + "second") 
                     }
                 });
             }

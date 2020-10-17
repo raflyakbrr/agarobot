@@ -1,4 +1,4 @@
-# AGAROBOT
+# free-agario-bots
 Free open source agar.io facebook bots, normal and proxy version!
 
 ## Change Log
@@ -6,8 +6,8 @@ New version - v2.0.0
 * Bypass recaptcha v3 [but u will still get captcha]
 * FB doesn't work [join discord server for more info]
 
-## Website
-1. [raflyakbrr.site](https://raflyakbrr.site)
+## Discord
+1. [200bots.ga](http://200bots.ga)
 
 ## Usage
 1. [How to get Facebook Token](https://www.youtube.com/watch?v=Sjtb_OHP2tE)
